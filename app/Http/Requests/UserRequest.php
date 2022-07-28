@@ -16,7 +16,7 @@ class UserRequest extends FormRequest
     {
         return [
             'comment' => ['required', 'string'],
-            'password' => ['required', Rule::in(['720DF6C2482218518FA20FDC52D4DED7ECC043AB'])]
+            'password' => ['required', Rule::in(config('user.valid_passwords'))]
         ];
     }
 }
