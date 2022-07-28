@@ -8,6 +8,11 @@ use Exception;
 
 class UserController extends Controller
 {
+    public function create(User $user)
+    {
+        return view('create', compact('user'));
+    }
+
     public function show(User $user)
     {
         return view('view', compact('user'));
@@ -15,7 +20,9 @@ class UserController extends Controller
 
     public function update(User $user, UserRequest $request)
     {
+        $user->appendUserComments($request->get('comment'));
 
+        return redirect()->route('users.show', compact('user'));
     }
 
     public function storeJson(User $user, UserRequest $request)

@@ -18,5 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users/{user}', [UserController::class, 'show']);
-Route::post('/users/{user}', [UserController::class, 'update']);
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/{user}', [UserController::class, 'show'])->name('show');
+    Route::post('/{user}/update', [UserController::class, 'update'])->name('update');
+    Route::get('/{user}/comment', [UserController::class, 'create'])->name('create');
+});
+
