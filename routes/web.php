@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/users/{user}', [UserController::class, 'show']);
+Route::post('/users/{user}', [UserController::class, 'update']);

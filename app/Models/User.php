@@ -21,4 +21,13 @@ class User extends Authenticatable
         'name',
         'comments',
     ];
+
+    public function appendUserComments($comment)
+    {
+        $newComment = $this->comments . "\n" . $comment;
+
+        $this->update([
+            'comments' => $newComment
+        ]);
+    }
 }
