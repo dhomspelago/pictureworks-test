@@ -31,7 +31,7 @@ class AppendComment extends Command
         $user = User::find($this->argument('user'));
         if(! $user) {
             $this->error('User not found');
-            return 0;
+            return 1;
         }
 
         $user->appendUserComments($this->argument('comment'));
